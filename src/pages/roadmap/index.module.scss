@@ -1,0 +1,191 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 1070px;
+  background-image: url('../../assets/images/roadmap/background-roadmap.png');
+  background-position: left top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  mix-blend-mode: color-dodge;
+  overflow: hidden;
+  position: relative;
+
+  .inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 103px;
+    width: 100%;
+    max-width: var(--gdf-default-container-width);
+    padding: 188px 32px;
+    position: relative;
+
+    @media (max-width: 767px) {
+      row-gap: 88px;
+      padding: 124px 15px 148px;
+    }
+  }
+}
+
+.bg-gradient {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bg-gradient-ellipse {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--gdf-default-container-width);
+  height: 100%;
+  z-index: -1;
+
+  .bg-color-gradient-ellipse {
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    filter: blur(300px);
+    background: var(--gdf-blue-curious);
+  }
+}
+
+.timelines {
+  width: 100%;
+
+  .progress-bar {
+    display: grid;
+    grid-auto-rows: minmax(min-content, max-content);
+    grid-template-columns: repeat(4, minmax(calc(100% / 4 - 48px), 1fr));
+    text-align: center;
+    column-gap: 48px;
+    position: relative;
+
+    @media (max-width: 767px) {
+      grid-template-columns: repeat(1, minmax(calc(100% / 1 - 48px), 1fr));
+      row-gap: 48px;
+    }
+
+    @media (min-width: 768px) and (max-width: 1023px) {
+      grid-template-columns: repeat(2, minmax(calc(100% / 2 - 48px), 1fr));
+      gap: 64px 0;
+    }
+
+    &:before {
+      border: 0;
+      border-top: 2px solid var(--gdf-purple-heliotrope);
+      content: '';
+      left: 0;
+      position: absolute;
+      top: 0;
+      height: 2px;
+      width: 100%;
+      z-index: 10;
+
+      @media (max-width: 767px) {
+        border: none;
+        border-left: 2px solid var(--gdf-purple-heliotrope);
+        width: 2px;
+        height: 100%;
+      }
+
+      @media (min-width: 768px) and (max-width: 1023px) {
+        border: none;
+      }
+    }
+
+    .progress {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: calc(58px + 2px + 32px);
+
+      @media (max-width: 767px) {
+        justify-content: flex-start;
+        padding-top: 0;
+        padding-left: calc(58px + 2px + 32px);
+
+        .step-inner header {
+          display: flex;
+          flex-direction: row;
+          column-gap: 32px;
+        }
+      }
+
+      @media (min-width: 768px) and (max-width: 1023px) {
+        border-top: 2px solid var(--gdf-purple-heliotrope);
+        align-items: flex-start;
+      }
+
+      .progress-point {
+        position: absolute;
+        border-radius: 50%;
+        top: calc(2px / 2 - 10px);
+        height: 20px;
+        width: 20px;
+        background-color: var(--gdf-purple-heliotrope);
+
+        @media (max-width: 767px) {
+          top: initial;
+          left: calc(2px / 2 - 10px);
+        }
+      }
+
+      .progress-line {
+        position: absolute;
+        top: 0;
+        width: 1px;
+        height: calc(58px + 2px);
+        background: var(--gdf-purple-heliotrope);
+
+        @media (max-width: 767px) {
+          top: initial;
+          left: 0;
+          width: calc(58px + 2px);
+          height: 1px;
+        }
+      }
+
+      .progress-point-node {
+        position: absolute;
+        border-radius: 50%;
+        height: 12px;
+        width: 12px;
+        top: calc(58px + 2px);
+        background: var(--gdf-purple-heliotrope);
+
+        @media (max-width: 767px) {
+          top: initial;
+          left: calc(58px + 2px);
+        }
+      }
+
+      header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 32px;
+
+        .progress-title {
+          display: flex;
+          flex-direction: column;
+          row-gap: 4px;
+        }
+
+        span {
+          display: flex;
+          flex-direction: column;
+          row-gap: 32px;
+          @media (max-width: 767px) {
+            text-align: left;
+          }
+        }
+      }
+    }
+  }
+}

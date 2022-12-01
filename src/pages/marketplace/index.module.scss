@@ -1,0 +1,56 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+
+  .inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 103px;
+    height: 100%;
+    width: 100%;
+    max-width: var(--gdf-default-container-width);
+    padding: 188px 32px;
+    position: relative;
+
+    @media (max-width: 767px) {
+      row-gap: 88px;
+      padding: 124px 15px 148px;
+    }
+  }
+}
+
+.bg-gradient {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../../assets/images/partner/background-partners.png');
+  background-position: left top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  mix-blend-mode: color-dodge;
+}
+
+.bg-gradient-ellipse {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--gdf-default-container-width);
+  height: 100%;
+  z-index: -1;
+
+  .bg-color-gradient-ellipse {
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    filter: blur(300px);
+    background: var(--gdf-blue-curious);
+  }
+}

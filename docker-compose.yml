@@ -1,14 +1,25 @@
-version: "3.3"
+version: '3.7'
+
 services:
-  nextjs:
-    ports:
-      - 3000:3000
-    image: mrhealer1207/wecheck999:latest
+  wecheck999fe:
+    image: mrhealer1207/wecheck999fe:latest
+    container_name: landing-page-frontend
+    restart: unless-stopped
     build:
-      context: ./
-      dockerfile: Dockerfile
-    environment: 
-      - BASE_URL=$${BASE_URL}
+      context: .
+      dockerfile: .docker/Dockerfile.development
     volumes:
-      - ./packages/wecheck:/app
-      - /app/.next
+      - '.:/app'
+      - '/app/node_modules'
+    ports:
+      - ${PORT}:5000
+    expose:
+      - '5000'
+    env_file:
+      - .env.development
+    tty: true
+    stdin_open: true
+    environment:
+      - REACT_APP_STAGE=${REACT_APP_STAGE}
+      - PORT=${PORT}
+      - NODE_ENV=${NODE_ENV}

@@ -1,12 +1,10 @@
-Sitemap: https://khonglamphine.com/phone-number-details
-
-
 # Disallow all crawlers access to certain pages.
 
 User-agent: *
-Disallow: /phone-number-details/
-Disallow: /app-report/
-Disallow: /message/
+Disallow: /tokens/
+Disallow: /roadmap/
+Disallow: /partners/
+Disallow: /teams/
 Disallow: /*q=
 
 User-agent: adsbot-google

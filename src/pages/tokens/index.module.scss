@@ -1,0 +1,182 @@
+.wrapper {
+  --gdf-advisors: #d140cb;
+  --gdf-aidrop: #f29ae4;
+  --gdf-community: #7b55e9;
+  --gdf-liquidity: #7ab44c;
+  --gdf-marketing: #3bdae4;
+  --gdf-partnership: #ee7c75;
+  --gdf-private-sale: #e4555a;
+  --gdf-public-sale: #a8a0ff;
+  --gdf-seed-sale: #23a7fa;
+  --gdf-team: #29f8a9;
+  --gdf-treasury: #e5c15c;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 982px;
+  overflow: hidden;
+  position: relative;
+
+  .inner {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 618px;
+    column-gap: 126px;
+    width: 100%;
+    max-width: var(--gdf-default-container-width);
+    padding: 0 32px 148px;
+    position: relative;
+
+    @media (max-width: 767px) {
+      flex-direction: column;
+      row-gap: 88px;
+      padding: 124px 15px 148px;
+      height: 100%;
+    }
+
+    @media (min-width: 768px) and (max-width: 1023px) {
+      flex-direction: column;
+      padding-top: 124px;
+      row-gap: 88px;
+      height: 100%;
+    }
+  }
+}
+
+.bg-gradient-ellipse {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--gdf-default-container-width);
+  height: 100%;
+  z-index: -1;
+
+  .bg-color-gradient-ellipse {
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    filter: blur(300px);
+    background: var(--gdf-blue-curious);
+  }
+}
+
+.distribution-tokens {
+  display: flex;
+  flex-direction: column;
+  row-gap: 64px;
+  flex-basis: 40%;
+  overflow: hidden;
+
+  @media (max-width: 1023px) {
+    flex-basis: 100%;
+    overflow: initial;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+  }
+
+  .color-board {
+    display: grid;
+    grid-auto-rows: minmax(min-content, max-content);
+    grid-template-columns: repeat(2, minmax(calc(100% / 2 - 24px), 1fr));
+    gap: 24px 0;
+    width: 100%;
+
+    .color {
+      display: flex;
+      align-content: center;
+      column-gap: 16px;
+      width: 100%;
+    }
+  }
+}
+
+.gantt-chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  flex-basis: 60%;
+
+  span {
+    display: none !important;
+  }
+
+  @media (max-width: 767px) {
+    flex-basis: 100%;
+
+    svg {
+      display: none;
+    }
+
+    span {
+      display: block !important;
+    }
+  }
+}
+
+.bg-building {
+  position: absolute;
+  bottom: -1%;
+  z-index: 10;
+  mix-blend-mode: color-dodge;
+}
+
+.circle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid var(--gdf-blue-whisper);
+}
+
+.advisors {
+  background: var(--gdf-advisors);
+}
+
+.aidrop {
+  background: var(--gdf-aidrop);
+}
+
+.community {
+  background: var(--gdf-advisors);
+}
+
+.liquidity {
+  background: var(--gdf-liquidity);
+}
+
+.marketing {
+  background: var(--gdf-marketing);
+}
+
+.partnership {
+  background: var(--gdf-partnership);
+}
+
+.private-sale {
+  background: var(--gdf-private-sale);
+}
+
+.public-sale {
+  background: var(--gdf-public-sale);
+}
+
+.seed-sale {
+  background: var(--gdf-seed-sale);
+}
+
+.team {
+  background: var(--gdf-team);
+}
+
+.treasury {
+  background: var(--gdf-treasury);
+}

@@ -1,0 +1,81 @@
+$size: (
+  'mobileS': '320px',
+  'mobileM': '375px',
+  'mobileL': '425px',
+  'tablet': '768px',
+  'laptop': '1024px',
+  'laptopL': '1440px',
+  'desktop': '2560px',
+);
+
+$device: (
+  'mobileS': (
+    min-width:
+      map-get(
+        $map: $size,
+        $key: mobileS,
+      ),
+  )
+  and(
+    max-width: 800px,
+  ),
+  'mobile': (
+    min-width:
+      map-get(
+        $map: $size,
+        $key: mobileM,
+      ),
+  )
+  and(
+    max-width: 900px,
+  ),
+  'mobileL': (
+    min-width:
+      map-get(
+        $map: $size,
+        $key: mobileL,
+      ),
+  )
+  and(
+    max-width: 950px,
+  ),
+  'tablet': (
+    min-width:
+      map-get(
+        $map: $size,
+        $key: tablet,
+      ),
+  ),
+  'laptop': (
+    min-width:
+      map-get(
+        $map: $size,
+        $key: laptop,
+      ),
+  ),
+  'laptopL': (
+    min-width:
+      map-get(
+        $map: $size,
+        $key: laptopL,
+      ),
+  ),
+  'desktop': (
+    min-width:
+      map-get(
+        $map: $size,
+        $key: desktop,
+      ),
+  ),
+);
+
+$theme-colors: (
+  'primary': #6a82fb,
+  'secondary': #fc5c7d,
+  'success': #45b649,
+  'danger': #f85032,
+  'warning': #ffd700,
+  'info': #00c9ff,
+);
+
+$gdf-container-width: 1432px;
