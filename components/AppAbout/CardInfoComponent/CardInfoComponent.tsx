@@ -1,6 +1,6 @@
 import { CardAction, CardAvartarWrapper, CardAvatar, CardContent, CardWrapper } from "./CardInfoComponentStyled"
 import bgAvatar from 'assets/images/bg-avatar.png';
-import { FacebookOutlined, InstagramOutlined, TwitterOutlined, YoutubeOutlined } from "@ant-design/icons";
+import { FacebookOutlined, GithubOutlined, InstagramOutlined, TwitterOutlined, YoutubeOutlined } from "@ant-design/icons";
 import { Divider } from "antd";
 
 export const CardInfoComponent = ()=> {
@@ -16,13 +16,14 @@ export const CardInfoComponent = ()=> {
             </CardContent>
             <CardAction>
                 <div className="action-groups">
-                    <FacebookOutlined />
+                    {/* <FacebookOutlined />
                     <Divider type="vertical" />
                     <InstagramOutlined />
                     <Divider type="vertical" />
                     <TwitterOutlined />
                     <Divider type="vertical" />
-                    <YoutubeOutlined />
+                    <YoutubeOutlined /> */}
+                    <GithubOutlined />
                 </div>
             </CardAction>
         </CardWrapper>

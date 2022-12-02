@@ -1,7 +1,7 @@
 
 import { ContainerWrapper } from "../../StyledComponents/CommonStyled"
 import { HeaderWrapper, InfoWrapper, NavbarWrapper, TopHeader, TopHeaderLeft, TopHeaderRight } from "./HeaderStyled"
-import { FacebookOutlined, InstagramOutlined, MailOutlined, PhoneOutlined, TwitterOutlined, YoutubeOutlined } from '@ant-design/icons'
+import { FacebookOutlined, GithubOutlined, InstagramOutlined, MailOutlined, PhoneOutlined, TwitterOutlined, YoutubeOutlined } from '@ant-design/icons'
 import { Button } from "antd"
 import { useRouter } from 'next/router';
 
@@ -12,11 +12,11 @@ export const Header = () => {
         <ContainerWrapper>
             <TopHeader>
                 <TopHeaderLeft>
-                    <InfoWrapper><MailOutlined /> <span>telesaleapp@gmail.com</span></InfoWrapper>
-                    <InfoWrapper><PhoneOutlined /> <span>(+84) 568296727</span></InfoWrapper>
+                    <InfoWrapper><MailOutlined /> <span><a className="mail-item" href= "mailto:telesaleapp@gmail.com?subject = Feedback&body = Message">telesaleapp@gmail.com</a></span></InfoWrapper>
+                    <InfoWrapper><PhoneOutlined /> <span><a className="phone-item"href="tel:+84568296727">(+84) 568296727</a></span></InfoWrapper>
                 </TopHeaderLeft>
                 <TopHeaderRight>
-                    <Button type="text" >
+                    {/* <Button type="text" >
                         <FacebookOutlined />
                     </Button>
                     <Button type="text" >
@@ -24,9 +24,9 @@ export const Header = () => {
                     </Button>
                     <Button type="text">
                         <TwitterOutlined />
-                    </Button>
+                    </Button> */}
                     <Button type="text">
-                        <YoutubeOutlined />
+                        <GithubOutlined href="https://github.com/wecheck-com"></GithubOutlined>
                     </Button>
                 </TopHeaderRight>
             </TopHeader>

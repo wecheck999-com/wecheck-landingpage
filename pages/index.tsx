@@ -11,9 +11,10 @@ import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector,  } from "app/hooks";
 import {createChartPhoneNumber, getPhoneReportList,getSearchReportList,selectPhoneReport, updatePhoneSearch} from 'features/phone-report-slice';
 import { IPayloadReportPhoneNumber, IPhoneReport, ISearchPhonePayload } from 'models/phone-report'
-import { wrapper } from "../app/store";
-import { ListNumberText } from 'utils/output-onlinestringtools'
-
+import Head from "next/head";
+import settings from "../data/settings.json";
+import jsonDataPhone from "../data/jsonDataPhone.json";
+import { wrapper } from 'app/store'
 interface DataType {
     key: string;
     phoneNumber: string;
@@ -148,16 +149,34 @@ const Home: NextPageWithLayout = () => {
 
 	};
 	useEffect(() => {
-        // var payload:ISearchPhonePayload ={
-        //     page: pagination.page,
-        //     limit:pagination.limit,
-        // }
-        // dispatch(getPhoneReportList(payload))
-     
+    let payload:ISearchPhonePayload ={
+            page: pagination.page,
+            limit:pagination.limit,
+        }
+        dispatch(getPhoneReportList(payload))
     },[]);
 
 
     return (
+        <>
+        <Head>
+            <title>{settings?.title}</title>
+            <meta name='description' content={settings?.description} />
+            <meta name='keywords' content={settings?.keywords} />
+            <meta property='og:title' content={settings?.OgTitle} />
+            <meta property='og:description' content={settings?.OgDescription} />
+            <meta property='og:image' content={settings?.OgIamge} />
+            <meta property='og:url' itemProp='url' content={settings?.OgUrl} />
+            <meta property='og:type' content='website' />
+            <meta name='RATING' content='GENERAL' />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonDataPhone) }}
+            />
+            <meta name="google-site-verification" content="7p5afqCwe02AvGGLhFbNf7Fq_bTFIyPHqmansRDZkxU" />
+            <link rel='icon' href='/favicon.ico' />
+        </Head>
+
         <PageWrapper>
             <ContainerWrapper>
                 <SearchWrapper>
@@ -165,44 +184,17 @@ const Home: NextPageWithLayout = () => {
                         <div className="guide-search">
                             HƯỚNG DẪN TÌM KIẾM <CaretDownOutlined />
                         </div>
+                        <h1 style={{opacity:0, color:"#E5E5E5"}}>Khonglamphien.com</h1>
                     </Tooltip>
                     <SearchForm>
                         <Row gutter={[16, 16]}>
                             <Col md={12}>
                                 <SearchFormItemWrapper>
                                     <span className="label">Tìm số: </span>
-                                    {/* <Select
-                                        placeholder="Đầu số"
-                                        style={{ width: 120, marginRight: 10 }}
-                                        options={[
-                                            {
-                                                value: 'all',
-                                                label: 'Tất cả',
-                                            },]}
-                                    >
-
-                                    </Select> */}
+                            
                                     <Input size='large' placeholder="Số cần tìm" onChange={(event) => setSearch(event.target.value)} />
                                 </SearchFormItemWrapper>
                             </Col>
-                            {/* <Col md={12}>
-                                <SearchFormItemWrapper>
-                                    <span className="label">Loại số: </span>
-                                    <Select
-                                        placeholder="Đầu số"
-                                        style={{ width: '100%', marginRight: 10 }}
-                                        options={[
-                                            {
-                                                value: 'all',
-                                                label: 'Tất cả',
-                                            },]}
-                                    >
-
-                                    </Select>
-
-                                </SearchFormItemWrapper>
-                            </Col> */}
-
                         </Row>
                         <ActionSearchWrapper>
                             <Button type="primary" loading={loading} icon={<SearchOutlined />} onClick={()=> handleSearch()}>
@@ -218,18 +210,12 @@ const Home: NextPageWithLayout = () => {
                     <span>KẾT QUẢ TÌM KIẾM</span>
                 </ActionSearchWrapper>
                 <ViewWrapper>
-                    <Table loading={loading} columns={columns} dataSource={phoneReportList ? phoneReportList : []} pagination={{
+                    <Table  rowKey="Id"  loading={loading} columns={columns} dataSource={phoneReportList ? phoneReportList : []} pagination={{
                         current:pagination.page,
                         pageSize: pagination.limit,
                         onChange: onChangePagination
                     }} />
                 </ViewWrapper>
-                <section style={{marginTop:'80px', backgroundColor:'#E5E5E5', zIndex:99}}>
-                        <div style={{marginBottom:"10px", height:'400px', backgroundColor:"#E5E5E5",width:"1300px", position:"absolute"}}></div>
-                        <div style={{overflow:'auto', height:'350px', zIndex:1, position:'inherit'}}>
-                            {ListNumberText[0].phoneNumber}
-                        </div>
-                    </section>
             </ContainerWrapper>
             <Modal title={`Tố cáo số thuê bao: ${titleModal} `} open={isModalOpen} onCancel={handleCancel} footer={false} >
             <Form 
@@ -266,6 +252,7 @@ const Home: NextPageWithLayout = () => {
                 </Form>
             </Modal>
         </PageWrapper>
+        </>
     )
 }
 
@@ -279,19 +266,15 @@ const Home: NextPageWithLayout = () => {
 //         store.dispatch(getPhoneReportList(payload))
 //   });
 
+Home.Layout = MainLayout;
 Home.getInitialProps = wrapper.getInitialPageProps(
     ({ dispatch }) =>
     async () => {
     var payload:ISearchPhonePayload ={
         page: 1,
-        limit:5,
+        limit:50,
     }
         await dispatch(getPhoneReportList(payload))
     }
 );
-
-Home.Layout = MainLayout;
-
 export default Home;
-
-

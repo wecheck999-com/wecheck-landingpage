@@ -10,9 +10,11 @@ const nextConfig = {
   },
   compiler: {
     styledComponents: true,
+    optimizeCss: true
   },
   experimental: {
     outputStandalone: true,
+    esmExternals: true
   },
   images: {
     deviceSizes: [375, 768, 1024, 1920],
@@ -39,7 +41,26 @@ module.exports = withAntdLess({
   ...nextConfig,
   // Other Config Here...
 
-  webpack(config) {
+  webpack(config, { isServer }) {
+    // if (isServer) {
+    //   require("./scripts/sitemap-generator");
+    // }
     return config;
   },
+  async redirects() {
+    return [
+      {
+          source: '/robots.txt',
+          destination: '/',
+          permanent: true,
+      }
+  ];
+  },
+
+  i18n: {
+    locales: ['vn'],
+    defaultLocale: 'vn',
+  },
 });
+
+// module.exports = nextConfig

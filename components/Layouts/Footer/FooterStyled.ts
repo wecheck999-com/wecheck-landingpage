@@ -74,3 +74,12 @@ export const Coppyright = styled.div`
     /* White */
     color: #FFFFFF;
 `
+
+export const MailOutlined = styled.a`
+    color: #FFFFFF;
+
+`
+export const PhoneOutlined = styled.a`
+    color: #FFFFFF;
+
+`

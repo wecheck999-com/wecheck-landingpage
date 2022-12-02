@@ -41,10 +41,16 @@ import {
   Form,
   Comment,
   message,
+  Breadcrumb,
 } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import moment from 'moment';
+import Link from 'next/link'
+import Head from 'next/head';
+import jsonDataPhone from "../../data/jsonDataPhone.json";
 const { TextArea } = Input;
+import settings from "../../data/settings.json";
+import { wrapper } from 'app/store';
 interface IDataChart {
   type: string;
   ratio: number;
@@ -162,7 +168,9 @@ const PhoneNumberDetail = () => {
   };
   // GET CHART
   useEffect(() => {
-    if (!router.query.phoneNumber) return;
+    if (!router.query.phoneNumber) {
+      router.push('/404')
+    };
     let payload = {
       id: router.query?.phoneNumber,
     };
@@ -199,7 +207,9 @@ const PhoneNumberDetail = () => {
   }, [router.query?.phoneNumber]);
   //GET DETAIL PHONE NUMBER
   useEffect(() => {
-    if (!router.query.id) return;
+    if (!router.query.id) {
+      router.push('/404')
+    };
     let payload = {
       id: router.query?.id,
     };
@@ -208,7 +218,9 @@ const PhoneNumberDetail = () => {
 
   // GET LIST PHONE COMMENTS
   useEffect(() => {
-    if (!router.query.id) return;
+    if (!router.query.id) {
+      router.push('/404')
+    };
     let payloadPhone: ISearchPhoneCommentPayload = {
       phoneSearchId: router.query?.id,
       page: pagination.page,
@@ -217,11 +229,43 @@ const PhoneNumberDetail = () => {
     dispatch(getListCommentPhone(payloadPhone));
   }, [router.query?.id]);
   return (
+    <>
+     <Head>
+            <title>{"Cảnh báo số điện thoại "+ router.query?.phoneNumber + " :: " + settings?.titleDomain}</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <meta name="keywords" content={"Số điện thoại" + router.query?.phoneNumber} />
+            <meta name="news_keywords" content={"Số điện thoại" + router.query?.phoneNumber} />
+            <meta name='description' content={settings?.description} />
+            <meta name='keywords' content={settings?.keywords} />
+            <meta property='og:title' content={settings?.OgTitle} />
+            <meta property='og:description' content={settings?.OgDescription} />
+            <meta property='og:image' content={settings?.OgIamge} />
+            <meta property='og:url' itemProp='url' content={settings?.OgUrl} />
+            <meta property='og:type' content='website' />
+            <meta name='RATING' content='GENERAL' />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonDataPhone) }}
+            />
+            <link rel='icon' href='/favicon.ico' />
+        </Head>
+ 
     <PageWrapper>
       <ContainerWrapper>
+      <Breadcrumb style={{marginTop:"20px"}}>
+        <Breadcrumb.Item><Link href="/">Trang chủ</Link></Breadcrumb.Item>
+        <Breadcrumb.Item>
+          <Link href="/">Số điện thoại</Link>
+        </Breadcrumb.Item>
+        <Breadcrumb.Item>
+          <a href="">{router.query?.phoneNumber}</a>
+        </Breadcrumb.Item>
+      </Breadcrumb>
         <ViewWrapper>
-          <TitlePhoneNumber>Chi tiết thuê bao</TitlePhoneNumber>
+        
+        <TitleChart>Cảnh báo lừa đảo</TitleChart> <TitlePhoneNumber>{router.query?.phoneNumber}</TitlePhoneNumber>
           <Table
+            rowKey="Id"
             loading={loading}
             columns={columns}
             dataSource={phoneDetailList ? [phoneDetailList] : []}
@@ -299,7 +343,17 @@ const PhoneNumberDetail = () => {
         </ViewCommentWrapper>
       </ContainerWrapper>
     </PageWrapper>
+    </>
   );
 };
 PhoneNumberDetail.Layout = MainLayout;
+PhoneNumberDetail.getInitialProps = wrapper.getInitialPageProps(
+  ({ dispatch }) =>
+  async (context) => {
+  let payload ={
+    id: context.query?.id
+  }
+      await dispatch(getDetailPhoneNumber(payload))
+  }
+);
 export default PhoneNumberDetail;

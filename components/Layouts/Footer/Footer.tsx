@@ -1,7 +1,7 @@
 import { Col, Divider, Row } from "antd";
 import { ContainerWrapper } from "components/StyledComponents/CommonStyled";
 import React from "react";
-import {BoxLinkWrapper, Coppyright, FooterWrapper } from './FooterStyled';
+import { BoxLinkWrapper, Coppyright, FooterWrapper } from './FooterStyled';
 export const Footer = () => {
 
     return (
@@ -39,7 +39,7 @@ export const Footer = () => {
                         <Col xs={24} md={8}>   <div className="footer-title">
                             Đóng góp
                         </div>
-                            <p>Mọi ý kiến đóng góp xin gửi về telesaleapp@gmail.com</p></Col>
+                            <p><a href= "mailto:telesaleapp@gmail.com?subject = Feedback&body = Message">Mọi ý kiến đóng góp xin gửi về telesaleapp@gmail.com</a></p></Col>
                     </Row>
                     <Divider style={{ color: '#fff', borderColor: '#fff' }} />
                     <Coppyright>Copyright 2022 .TL Group. All Right Reserved.</Coppyright>

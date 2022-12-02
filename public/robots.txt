@@ -1,0 +1,13 @@
+Sitemap: https://wecheck999.com/sitemap.xml
+
+
+# Disallow all crawlers access to certain pages.
+
+User-agent: *
+Disallow: /phone-number-details/
+Disallow: /app-report/
+Disallow: /message/
+Disallow: /*q=
+
+User-agent: adsbot-google
+Crawl-delay: 1

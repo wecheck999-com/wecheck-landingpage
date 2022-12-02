@@ -42,6 +42,12 @@ export const InfoWrapper = styled.div`
     svg {
         margin-right: 10px;
     }
+    .mail-item {
+        color: #FFFFFF;
+    }
+    .phone-item {
+        color: #FFFFFF;
+    }
 `
 
 export const NavbarWrapper = styled.div`
@@ -72,4 +78,5 @@ export const NavbarWrapper = styled.div`
             opacity: 0.8;
         }
     }
+
 `

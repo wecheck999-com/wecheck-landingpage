@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Form } from 'antd';
-export const TitlePhoneNumber = styled.h2`
+export const TitlePhoneNumber = styled.h1`
   text-align: center;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -10,7 +10,7 @@ export const ViewChart = styled.div`
   margin-top: 20px;
   margin-bottom: 20px;
 `;
-export const TitleChart = styled.h2`
+export const TitleChart = styled.h1`
   text-align: center;
   margin-bottom: 10px;
 `;
